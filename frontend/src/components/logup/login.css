@@ -1,0 +1,125 @@
+/* Navigation and Header Styles */
+.nav {
+    display: flex;
+  }
+  
+  header {
+    width: 100%;
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(14, 14, 15);
+    color: white;
+    height: fit-content;
+  }
+  
+  /* Sign in/up Button Container */
+  header div.signinup {
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+  }
+  
+  /* Header Buttons */
+  header div.signinup button {
+    background: none;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  header div.signinup button:hover {
+    background: rgba(0, 0, 0, 1);
+  }
+  
+  /* Popup Container */
+  div.popupcon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Popup Form Styles */
+  div.popupcon div.popup {
+    background-color: white;
+    width: 350px;
+    border-radius: 5px;
+    padding: 20px 25px 30px 25px;
+  }
+  
+  /* Popup Header */
+  div.popupcon div.popup h2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    color: #30475e;
+  }
+  
+  /* Close Button in Popup */
+  div.popupcon div.popup h2 button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 18px;
+    font-weight: 550;
+    color: #797775;
+  }
+  
+  /* Form Input Fields */
+  div.popupcon div.popup input {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #30475e;
+    border-radius: 0;
+    padding: 5px 0;
+    font-weight: 550;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  /* Login/Register Button */
+  div.popupcon div.popup button.loginbtn,
+  div.popupcon div.register button.registerbtn {
+    border: none;
+    font-weight: 550;
+    font-size: 15px;
+    color: white;
+    background-color: #30475e;
+    padding: 4px 10px;
+    margin-top: 10px;
+  }
+  
+  /* Register Popup Specific Styles */
+  div.popupcon div.register {
+    background-color: #edeef7;
+  }
+  
+  div.popupcon div.register h2 {
+    color: #fa9579;
+  }
+  
+  div.popupcon div.register input {
+    border-bottom-color: #fa9579;
+  }
+  
+  div.popupcon div.register button.registerbtn {
+    background-color: #fa9579;
+  }

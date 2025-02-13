@@ -1,0 +1,39 @@
+{
+  "Header": {
+    "title": "discover",
+    "paragraph": "Welcome to CareerSync, where seamless filtration tools empower recruiters to identify top talent effortlessly."
+  },
+  "About": {
+    "paragraph": " Elevate your career journey with our sophisticated platform tailored for both recruiters and professionals seeking validation and growth opportunities",
+    "Why": [
+      "Precision Targeting",
+      "Comprehensive Skill Assessment",
+      "Peer Endorsements",
+      "Competitive Learning"
+    ],
+    "Why2": [
+      "Personalized Career Guidance",
+      "Dynamic Networking",
+      "Seamless Integration",
+      "Continuous Innovation"
+    ]
+  },
+
+  "Testimonials": [
+    {
+      "img": "img/testimonials/abhi.png",
+      "text": "\"As a professional navigating the competitive job market, CareerSync has been a game-changer. Their platform not only provided me with a comprehensive skill assessment that highlighted my strengths and areas for growth but also facilitated peer endorsements that bolstered my credibility.\"",
+      "name": "Abhishek Sharma"
+    },
+    {
+      "img": "img/testimonials/gautham.png",
+      "text": "\" The competitive learning modules have kept me sharp and market-ready, while the personalized career guidance has been invaluable in charting my path to success. CareerSync isn't just a platform; it's a career companion I can't imagine navigating the industry without.\"",
+      "name": "Gautham Reddy"
+    },
+    {
+      "img": "img/testimonials/krishna.png",
+      "text": "\"Choosing CareerSync was one of the best decisions we made for our organization. Their seamless integration with our existing systems has streamlined our recruitment workflows, saving us time and resources.\"",
+      "name": "Krishna Manohar"
+    }
+  ]
+}

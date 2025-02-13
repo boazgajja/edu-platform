@@ -1,0 +1,21 @@
+#contact .btn-custom {
+    margin: 30px 0;
+    background: transparent;
+    border: 2px solid #fff;
+  }
+  
+  #contact .btn-custom:hover {
+    color: #1f386e;
+    background: #fff;
+  }
+  
+  .page-scroll {
+    color: #000;
+    font-size: 25px;
+  }
+  
+  .page-scroll:hover {
+    background-color: none;
+    color: #000;
+  }
+  

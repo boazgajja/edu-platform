@@ -1,0 +1,10 @@
+.page-scroll {
+    color: #000;
+    font-size: 25px;
+  }
+  
+  .page-scroll:hover {
+    background-color: none;
+    color: #000;
+  }
+  
