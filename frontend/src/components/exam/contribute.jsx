@@ -1,138 +1,170 @@
-import React, { useState } from "react";
-// import "./QuestionForm.css"; // Import CSS file for styling
+import React, { useState, useEffect } from "react";
+import "./contribute.css";
 
-function QuestionForm() {
-  // State variables to store question, options, and selected answer
+function ContributeQuestionPage() {
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState(["", "", "", ""]);
   const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState(null);
+  const [userName, setUserName] = useState("");
 
-  // Function to handle changes in question input
+  // Fetch the name from localStorage when component mounts
+  useEffect(() => {
+    const storedName = localStorage.getItem("name");
+    if (storedName) {
+      setUserName(storedName);
+    }
+  }, []);
+
   const handleQuestionChange = (event) => {
     setQuestion(event.target.value);
   };
 
-  // Function to handle changes in option inputs
   const handleOptionChange = (index, event) => {
     const newOptions = [...options];
     newOptions[index] = event.target.value;
     setOptions(newOptions);
   };
 
-  // Function to handle selection of answer
   const handleAnswerChange = (event) => {
     setSelectedAnswer(event.target.value);
   };
 
-  // Function to handle form submission
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    // Log form data before sending
-    console.log("Form Data:", {
-      question: question,
-      options: options,
-      answer: selectedAnswer
-    });
-  
-    // Convert options array to a JSON string
-    const optionsJson = JSON.stringify(options);
-  
-    // Create a new FormData object to store form data
-    const formData = new FormData(event.target);
-  
-    // Append the options JSON string to the form data
-    formData.append('options', optionsJson);
-  
-    // Log form data after appending options
-    console.log("Form Data After Appending Options:", formData);
-  
-    // Send a POST request to the server with form data
-    fetch(`http://localhost/practice1/PHP/contribute.php`, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+    setIsSubmitting(true);
+    setSubmitMessage(null);
+    
+    // Get the name directly from localStorage at submission time
+    // This ensures we have the most up-to-date value
+    const name = localStorage.getItem("name");
+    
+    const questionData = {
+      question,
+      options,
+      answer: selectedAnswer,
+      name: name
+    };
+
+    try {
+      console.log("Sending data:", questionData); // Debug log to verify data
+      
+      const response = await fetch("http://localhost:5000/api/question", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(questionData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setSubmitMessage({
+          type: "success",
+          text: "Question submitted successfully!"
+        });
+        setQuestion("");
+        setOptions(["", "", "", ""]);
+        setSelectedAnswer("");
+      } else {
+        setSubmitMessage({
+          type: "error",
+          text: `Error: ${data.error || "Failed to submit"}`
+        });
       }
-      return response.text();
-    })
-    .then(data => {
-      console.log("Response:", data);
-      // Parse the response as JSON
-      try {
-        const jsonData = JSON.parse(data);
-        if (jsonData === 'success') {
-          console.log('Question submitted successfully');
-          window.location.href = '/home';
-          alert("Your question was successfully submitted.");
-          // You may want to redirect or show a success message here
-        } else {
-          console.error('Question submission failed');
-          // Handle question submission failure
-        }
-      } catch (error) {
-        console.error('Error parsing JSON:', error);
-      }
-    })
-    .catch(error => console.error('Error fetching data:', error));
+    } catch (error) {
+      console.error("Error submitting question:", error);
+      setSubmitMessage({
+        type: "error",
+        text: "Failed to submit question. Network error."
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-  
-  
-  
 
   return (
-    <div className="question-form-container">
-      <form action="http://localhost/practice1/PHP/contribute.php" method="post" onSubmit={handleSubmit} className="question-form">
-        <div className="question-input">
-          <label htmlFor="question" >Question:</label>
-          <input
-            type="text"
-            id="question"
-            name="question"
-            value={question}
-            onChange={handleQuestionChange}
-            required
-            className="question-text-input"
-          />
-        </div>
-        <label style={{ marginBottom: "50px" }} >Options:</label>
-        <div className="options-container">
-          {options.map((option, index) => (
+    <div className="page-container">
+      <div className="page-header">
+        <h1>Contribute a Question</h1>
+        <p>Help grow our collection by contributing your own questions</p>
+        {userName && <p>Contributing as: {userName && userName.includes('@') 
+                ? userName.substring(0, userName.indexOf('@')) 
+                : userName || 'Anonymous'}</p>}
+      </div>
+
+      <div className="contribute-card">
+        {submitMessage && (
+          <div className={`alert ${submitMessage.type === "success" ? "alert-success" : "alert-error"}`}>
+            {submitMessage.text}
+          </div>
+        )}
+        
+        <form onSubmit={handleSubmit} className="contribute-form">
+          <div className="form-group">
+            <label htmlFor="question">Your Question:</label>
             <input
-              key={index}
               type="text"
-              name="options[]"
-              className="option-input"
-              value={option}
-              onChange={(event) => handleOptionChange(index, event)}
+              id="question"
+              name="question"
+              value={question}
+              onChange={handleQuestionChange}
               required
+              className="form-control"
+              placeholder="Type your question here"
             />
-          ))}
-        </div>
-        <div className="answer-dropdown">
-          <label htmlFor="answer">Answer:</label>
-          <select
-            id="answer"
-            name="answer"
-            value={selectedAnswer}
-            onChange={handleAnswerChange}
-            required
-            className="drop"
+          </div>
+          
+          <div className="form-group">
+            <label>Answer Options:</label>
+            <div className="options-container">
+              {options.map((option, index) => (
+                <div key={index} className="option-input-group">
+                  <div className="option-label">Option {index + 1}</div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={option}
+                    onChange={(event) => handleOptionChange(index, event)}
+                    required
+                    placeholder={`Enter option ${index + 1}`}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="answer">Correct Answer:</label>
+            <select
+              id="answer"
+              name="answer"
+              value={selectedAnswer}
+              onChange={handleAnswerChange}
+              required
+              className="form-control"
+            >
+              <option value="">-- Select the correct answer --</option>
+              {options.filter(option => option.trim() !== "").map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+          
+          <button 
+            className="primary-button" 
+            type="submit"
+            disabled={isSubmitting}
           >
-            <option value="">Select Answer</option>
-            {options.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button className="btn" type="submit">Submit</button>
-      </form>
+            {isSubmitting ? "Submitting..." : "Submit Question"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default QuestionForm;
+export default ContributeQuestionPage;

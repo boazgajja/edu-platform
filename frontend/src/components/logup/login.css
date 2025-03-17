@@ -1,125 +1,223 @@
-/* Navigation and Header Styles */
-.nav {
-    display: flex;
+/* AuthComponent.css */
+.auth-container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.navbar {
+  /* padding: 1rem 2rem; */
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.auth-button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-button.login {
+  background-color: #2196f3;
+  color: white;
+}
+
+.auth-button.logout {
+  background-color: #f44336;
+  color: white;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.auth-modal {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  color: #2196f3;
+  border-bottom: 2px solid #2196f3;
+}
+
+.google-auth-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: white;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.google-auth-button:hover {
+  background-color: #f5f5f5;
+}
+
+.google-icon {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.divider span {
+  padding: 0 0.75rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #1976d2;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.forgot-password {
+  color: #2196f3;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .auth-modal {
+    margin: 1rem;
+    padding: 1.5rem;
   }
   
-  header {
-    width: 100%;
-    display: block;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    background-color: rgb(14, 14, 15);
-    color: white;
-    height: fit-content;
+  .modal-header h2 {
+    font-size: 1.25rem;
   }
   
-  /* Sign in/up Button Container */
-  header div.signinup {
-    display: flex;
-    justify-content: space-around;
-    width: 200px;
+  .google-auth-button,
+  .submit-button {
+    padding: 0.6rem;
   }
-  
-  /* Header Buttons */
-  header div.signinup button {
-    background: none;
-    border: 2px solid white;
-    color: white;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  header div.signinup button:hover {
-    background: rgba(0, 0, 0, 1);
-  }
-  
-  /* Popup Container */
-  div.popupcon {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Popup Form Styles */
-  div.popupcon div.popup {
-    background-color: white;
-    width: 350px;
-    border-radius: 5px;
-    padding: 20px 25px 30px 25px;
-  }
-  
-  /* Popup Header */
-  div.popupcon div.popup h2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    color: #30475e;
-  }
-  
-  /* Close Button in Popup */
-  div.popupcon div.popup h2 button {
-    border: none;
-    background-color: transparent;
-    outline: none;
-    font-size: 18px;
-    font-weight: 550;
-    color: #797775;
-  }
-  
-  /* Form Input Fields */
-  div.popupcon div.popup input {
-    width: 100%;
-    margin-bottom: 20px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #30475e;
-    border-radius: 0;
-    padding: 5px 0;
-    font-weight: 550;
-    font-size: 14px;
-    outline: none;
-  }
-  
-  /* Login/Register Button */
-  div.popupcon div.popup button.loginbtn,
-  div.popupcon div.register button.registerbtn {
-    border: none;
-    font-weight: 550;
-    font-size: 15px;
-    color: white;
-    background-color: #30475e;
-    padding: 4px 10px;
-    margin-top: 10px;
-  }
-  
-  /* Register Popup Specific Styles */
-  div.popupcon div.register {
-    background-color: #edeef7;
-  }
-  
-  div.popupcon div.register h2 {
-    color: #fa9579;
-  }
-  
-  div.popupcon div.register input {
-    border-bottom-color: #fa9579;
-  }
-  
-  div.popupcon div.register button.registerbtn {
-    background-color: #fa9579;
-  }
+}

@@ -1,0 +1,364 @@
+/* ProfilePage.css */
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Page Container */
+  .page-container {
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: #4f46e5;
+    color: white;
+    padding: 16px 24px;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .navigation {
+    display: none;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 24px;
+    transition: color 0.2s;
+  }
+  
+  .nav-link:hover {
+    color: #c7d2fe;
+  }
+  
+  .logout-button {
+    background-color: #374151;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .logout-button:hover {
+    background-color: #4b5563;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex-grow: 1;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  /* Profile Overview */
+  .profile-overview {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-image-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #c7d2fe;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profile-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #cbd5e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: #1e293b;
+  }
+  
+  .profile-info {
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  .profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 12px;
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: center;
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  .detail-icon {
+    margin-right: 8px;
+  }
+  
+  .profile-points {
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  .points-value {
+    font-size: 36px;
+    font-weight: bold;
+    color: #4f46e5;
+  }
+  
+  .points-label {
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  /* Courses Section */
+  .courses-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+  }
+  
+  .navigation-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .nav-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+  }
+  
+  .nav-button:hover:not(.disabled) {
+    background-color: #f8fafc;
+  }
+  
+  .nav-button.disabled {
+    color: #cbd5e1;
+    cursor: not-allowed;
+  }
+  
+  .courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .course-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    transition: box-shadow 0.2s;
+  }
+  
+  .course-item:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .course-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .course-title {
+    font-weight: 500;
+    color: #1e293b;
+  }
+  
+  .lesson-count {
+    font-size: 14px;
+    color: #64748b;
+  }
+  
+  .progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #e2e8f0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #4f46e5;
+    border-radius: 5px;
+  }
+  
+  .course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .progress-text {
+    font-size: 14px;
+    color: #64748b;
+  }
+  
+  .continue-link {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #4f46e5;
+    text-decoration: none;
+  }
+  
+  .continue-link:hover {
+    text-decoration: underline;
+  }
+  
+  .arrow-icon {
+    margin-left: 4px;
+  }
+  
+  /* Points Graph Section */
+  .points-graph-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .graph-container {
+    height: 300px;
+    width: 100%;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 16px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  /* Media Queries */
+  @media (min-width: 768px) {
+    .navigation {
+      display: flex;
+    }
+  
+    .profile-content {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  
+    .profile-info {
+      margin-top: 0;
+      margin-left: 24px;
+      text-align: left;
+    }
+  
+    .profile-details {
+      flex-direction: row;
+      gap: 16px;
+    }
+  
+    .profile-points {
+      margin-top: 0;
+      margin-left: auto;
+      text-align: right;
+    }
+  }
+
+  /* Add this to your existing ProfilePage.css file */
+
+.edit-profile-button {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-profile-button:hover {
+  background-color: #4338ca;
+}
+
+.edit-profile-button::before {
+  content: "✏️";
+  font-size: 14px;
+}

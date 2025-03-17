@@ -1,12 +1,27 @@
 import mongoose from "mongoose";
 
+const CourseSchema = new mongoose.Schema({
+  title: String,
+  progress: Number,
+  totalLessons: Number,
+  completedLessons: Number,
+});
+
+const PointsHistorySchema = new mongoose.Schema({
+  day: String,
+  points: Number,
+});
+
 const UserSchema = new mongoose.Schema({
-  fullname: { type: String, required: true },
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  age: { type: Number, required: true },
+  email: { type: String, required: true, unique: true }, // Add email field
+  name: { type: String, required: true },
+  imageUrl: String,
+  totalPoints: Number,
+  rank: String,
+  memberSince: String,
+  courses: [CourseSchema],
+  pointsHistory: [PointsHistorySchema],
 });
 
 const User = mongoose.model("User", UserSchema);
-export default User;
+export default User; // Use ES module export
