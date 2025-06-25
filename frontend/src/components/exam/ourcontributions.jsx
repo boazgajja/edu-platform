@@ -27,7 +27,7 @@ function MyQuestionsPage() {
       }
 
       // Fetch questions filtered by the user's name
-      const response = await fetch(`http://localhost:5000/api/question?name=${encodeURIComponent(userName)}`);
+      const response = await fetch(`https://edu-platform-8cp6.onrender.com/api/question?name=${encodeURIComponent(userName)}`);
       if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
       const data = await response.json();
@@ -46,7 +46,7 @@ function MyQuestionsPage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/question/${questionId}`, {
+      const response = await fetch(`https://edu-platform-8cp6.onrender.com/api/question/${questionId}`, {
         method: "DELETE",
       });
 

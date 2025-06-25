@@ -23,9 +23,8 @@ mongoose.connect(process.env.MONGO_URI)
 // Routes
 // app.use("/api/auth", authRoutes);
 app.use("/api/question", questionRoutes); 
-
 // app.use("/api/chats", chat); 
-app.use("api/user",User);
+app.use("/api/users",User);
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
 
 

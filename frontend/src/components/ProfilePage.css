@@ -114,7 +114,11 @@
     font-size: 48px;
     color: #1e293b;
   }
-  
+  .profile-image-placeholder span{
+    font-size: 70px;
+    color: #1e293b;
+    margin-bottom: 16px;
+  }
   .profile-info {
     margin-top: 16px;
     text-align: center;

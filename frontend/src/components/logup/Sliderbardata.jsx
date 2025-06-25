@@ -5,24 +5,24 @@
 
   export const SidebarData = [
    
-    {
-      title: "Assessments",
-      path: "/exam",
-      icon: <IoIcons.IoIosPaper/>,
-      cName: "nav-text",
-    },
-    {
-      title: "Messages",
-      path: "/chat",
-      icon: <FaIcons.FaUser/>,
-      cName: "nav-text",
-    },
-    {
-      title: "RecruiterConnect",
-      path: "/team",
-      icon: <IoIcons.IoMdPeople/>,
-      cName: "nav-text",
-    },
+    // {
+    //   title: "Assessments",
+    //   path: "/exam",
+    //   icon: <IoIcons.IoIosPaper/>,
+    //   cName: "nav-text",
+    // },
+    // {
+    //   title: "Messages",
+    //   path: "/chat",
+    //   icon: <FaIcons.FaUser/>,
+    //   cName: "nav-text",
+    // },
+    // {
+    //   title: "RecruiterConnect",
+    //   path: "/team",
+    //   icon: <IoIcons.IoMdPeople/>,
+    //   cName: "nav-text",
+    // },
     {
       title: "Contributed Questions",
       path: "/contributed",

@@ -63,17 +63,10 @@ const ProfilePage = () => {
         <div className="profile-overview">
           <div className="profile-content">
             <div className="profile-image-container">
-              {userData.imageUrl ? (
-                <img 
-                  src={userData.imageUrl} 
-                  alt={userData.name} 
-                  className="profile-image"
-                />
-              ) : (
+             
                 <div className="profile-image-placeholder">
                   <span>{userData.name.charAt(0)}</span>
                 </div>
-              )}
             </div>
             
             <div className="profile-info">
@@ -90,7 +83,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="detail-item">
                   <span className="detail-icon">📚</span>
-                  <span>{userData.courses.length} Enrolled Courses</span>
+                  <span>{userData.courses.length} Topics</span>
                 </div>
               </div>
 
@@ -182,7 +175,7 @@ const ProfilePage = () => {
 
       {/* Footer */}
       <footer className="footer">
-        <p>© {new Date().getFullYear()} EduLearn Platform. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Educonnect Platform. All rights reserved.</p>
       </footer>
     </div>
   );

@@ -50,7 +50,7 @@ function ContributeQuestionPage() {
     try {
       console.log("Sending data:", questionData); // Debug log to verify data
       
-      const response = await fetch("http://localhost:5000/api/question", {
+      const response = await fetch("https://edu-platform-8cp6.onrender.com/api/question", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

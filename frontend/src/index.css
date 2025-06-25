@@ -6,7 +6,14 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
+#root{
+  /* border:3px solid black; */
+  margin: 0;
+  padding: 0;
+  /* border: 0; */
+  /* display: flex; */
+  position: relative;
+}
 body {
   background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
   color: #333;

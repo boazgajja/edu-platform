@@ -1,61 +1,63 @@
-import express from "express";
-import User from "../models/User.js";
+// routes/userRoutes.js
+import express from 'express';
+import User from '../models/User.js';
 
 const router = express.Router();
 
-// ✅ Get user details by email
-router.get("/users/:email", async (req, res) => {
+// POST - Create a new user
+router.post('/', async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.params.email });
-
-    if (!user) return res.status(404).json({ message: "User not found" });
-
-    res.json(user);
+    const newUser = new User(req.body);
+    await newUser.save();
+    
+    res.status(201).json(newUser);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ message: error.message });
   }
 });
 
-// ✅ Update user details (e.g., updating progress in a course)
-router.put("/users/:email", async (req, res) => {
+// PUT - Update a user
+router.put('/:email', async (req, res) => {
   try {
-    const { email } = req.params;
-    const updateData = req.body; // Example: { totalPoints: 4000, rank: "Platinum" }
-
     const updatedUser = await User.findOneAndUpdate(
-      { email }, // Find user by email
-      { $set: updateData }, // Update the fields
-      { new: true, runValidators: true } // Return updated user
+      { email: req.params.email },
+      req.body,
+      { new: true, runValidators: true }
     );
-
-    if (!updatedUser) return res.status(404).json({ message: "User not found" });
-
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
     res.json(updatedUser);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ message: error.message });
   }
 });
 
-// ✅ Update a specific course progress by email & course ID
-router.put("/users/:email/courses/:courseId", async (req, res) => {
+// GET - Get a single user by email
+router.get('/:email', async (req, res) => {
+  console.log(req.params.email);
   try {
-    const { email, courseId } = req.params;
-    const { progress, completedLessons } = req.body; // Example: { progress: 90, completedLessons: 11 }
-
-    const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: "User not found" });
-
-    // Find the course and update progress
-    const course = user.courses.id(courseId);
-    if (!course) return res.status(404).json({ message: "Course not found" });
-
-    course.progress = progress;
-    course.completedLessons = completedLessons;
-
-    await user.save(); // Save the updated document
+    // console.log(req.params.email);
+    const user = await User.findOne({ email: req.params.email });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
     res.json(user);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+// DELETE - Delete a user
+router.delete('/users/:email', async (req, res) => {
+  try {
+    const deletedUser = await User.findOneAndDelete({ email: req.params.email });
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json({ message: 'User deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 

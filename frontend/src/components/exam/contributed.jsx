@@ -19,7 +19,7 @@ function QuestionsDisplayPage() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:5000/api/question");
+      const response = await fetch("https://edu-platform-8cp6.onrender.com/api/question");
       if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
       const data = await response.json();

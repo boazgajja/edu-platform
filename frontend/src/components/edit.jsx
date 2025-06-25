@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './edit.css'; // You'll need to create this CSS file
+import axios from 'axios';
 
 const EditProfile = () => {
   const navigate = useNavigate();

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { fetchUsers, createUser } from "./services/api";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/logup/navbar";
 import Home from "./components/home/home";
@@ -45,10 +44,6 @@ const App = () => {
       {isLoggedIn ? <Route path="/" element={<Homes />} />: <Route path="/" element={<Home />} />}
         
         <Route path="/home" element={<Homes />} />
-        <Route path="/chat" element={<Chat />} />
-
-        <Route path="/exam" element={<Exam />} />
-        <Route path="/exam/quiz" element={<Noof />} />
         <Route path="/profile" element={<Profilepage/>} />
         <Route path="/profile/edit" element={<Edit/>} />
         <Route path="/contribute" element={<Contribute />} />
